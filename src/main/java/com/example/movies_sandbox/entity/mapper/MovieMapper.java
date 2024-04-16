@@ -1,6 +1,6 @@
 package com.example.movies_sandbox.entity.mapper;
 
-import com.example.movies_sandbox.dto.MovieDto;
+import com.example.movies_sandbox.entity.dto.MovieDto;
 import com.example.movies_sandbox.entity.Genre;
 import com.example.movies_sandbox.entity.Movie;
 import org.mapstruct.Mapper;
@@ -11,7 +11,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Mapper
-public interface MovieMapper{
+public interface MovieMapper extends MainMapper<Movie, MovieDto> {
+
     @Mapping(target = "genres", source = "genres", qualifiedByName = "mapFromGenresToStrings")
     MovieDto toDto(Movie entity);
 

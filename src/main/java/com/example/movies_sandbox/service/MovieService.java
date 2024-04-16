@@ -1,23 +1,16 @@
 package com.example.movies_sandbox.service;
 
 import com.example.movies_sandbox.entity.Movie;
+import com.example.movies_sandbox.entity.dto.MovieDto;
 import com.example.movies_sandbox.entity.mapper.MovieMapper;
-import com.example.movies_sandbox.repository.MovieRepository;
+import com.example.movies_sandbox.repository.BaseRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class MovieService {
-    private final MovieRepository movieRepository;
-    private final MovieMapper mapper;
+public class MovieService extends BaseService<Movie, MovieDto> {
 
-    public MovieService(MovieRepository movieRepository, MovieMapper mapper) {
-        this.movieRepository = movieRepository;
-        this.mapper = mapper;
+    public MovieService(BaseRepository<Movie> baseRepository, MovieMapper mapper) {
+        super(baseRepository, mapper);
     }
 
-    public List<Movie> findAll() {
-        return movieRepository.findAll();
-    }
 }

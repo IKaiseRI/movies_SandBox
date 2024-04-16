@@ -1,4 +1,4 @@
-package com.example.movies_sandbox.dto;
+package com.example.movies_sandbox.entity.dto;
 
 import java.util.Date;
 import java.util.Set;
