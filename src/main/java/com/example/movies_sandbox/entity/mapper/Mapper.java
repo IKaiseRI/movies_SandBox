@@ -1,6 +1,6 @@
 package com.example.movies_sandbox.entity.mapper;
 
-public interface MainMapper<ENTITY, DTO> {
+public interface Mapper<ENTITY, DTO> {
 
     DTO toDto(ENTITY entity);
 

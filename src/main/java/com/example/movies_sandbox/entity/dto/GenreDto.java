@@ -1,9 +1,17 @@
 package com.example.movies_sandbox.entity.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Set;
 
-public record GenreDto(
-        String name,
-        Set<String> movies
-) {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class GenreDto {
+    private String name;
+    private Set<String> movies;
 }
