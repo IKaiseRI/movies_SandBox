@@ -3,7 +3,7 @@ package com.example.movies_sandbox.service;
 
 import com.example.movies_sandbox.entity.Genre;
 import com.example.movies_sandbox.entity.dto.GenreDto;
-import com.example.movies_sandbox.entity.mapper.GenreMapper;
+import com.example.movies_sandbox.entity.mapper.GenreCustomMapper;
 import com.example.movies_sandbox.repository.GenreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class GenreService {
 
     private final GenreRepository repository;
-    private final GenreMapper mapper;
+    private final GenreCustomMapper mapper;
 
     public GenreDto create(GenreDto genreDto) {
         if(genreDto == null) {

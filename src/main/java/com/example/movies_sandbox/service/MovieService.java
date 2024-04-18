@@ -2,7 +2,7 @@ package com.example.movies_sandbox.service;
 
 import com.example.movies_sandbox.entity.Movie;
 import com.example.movies_sandbox.entity.dto.MovieDto;
-import com.example.movies_sandbox.entity.mapper.MovieMapper;
+import com.example.movies_sandbox.entity.mapper.MovieCustomMapper;
 import com.example.movies_sandbox.repository.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class MovieService {
 
     private final MovieRepository repository;
-    private final MovieMapper mapper;
+    private final MovieCustomMapper mapper;
 
     public MovieDto create(MovieDto movieDto) {
         if (movieDto == null) {
