@@ -1,5 +1,6 @@
 package com.example.movies_sandbox.entity;
 
+import com.example.movies_sandbox.entity.enums.Rating;
 import com.example.movies_sandbox.utils.RatingConverter;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;

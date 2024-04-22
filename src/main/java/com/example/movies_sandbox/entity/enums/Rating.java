@@ -1,4 +1,4 @@
-package com.example.movies_sandbox.entity;
+package com.example.movies_sandbox.entity.enums;
 
 import java.util.HashMap;
 import java.util.Map;

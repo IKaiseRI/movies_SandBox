@@ -17,7 +17,6 @@ public class FilmController {
 
     @GetMapping
     public List<Film> findAll() {
-        filmRepository.findAll().forEach(System.out::println);
-        return filmRepository.findAll();
+        return filmRepository.findFirst10();
     }
 }
