@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,13 +38,23 @@ public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer filmId;
+    private Integer id;
 
     private String title;
     private String description;
     private Year releaseYear;
-    private Integer languageId;
-    private Integer originalLanguageId;
+
+    @ManyToMany
+    @JoinTable(
+            name = "film_language",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "language_id")
+    )
+    private Set<Language> translatedLanguages = new HashSet<>();
+
+    @OneToOne
+    @JoinColumn(name = "language_id")
+    private Language originalLanguageId;
     private Integer rentalDuration;
     private Double rentalRate;
     private Integer length;
