@@ -44,6 +44,10 @@ public class Film {
     private String description;
     private Year releaseYear;
 
+    @OneToOne
+    @JoinColumn(name = "original_language_id")
+    private Language originalMovieLanguage;
+
     @ManyToMany
     @JoinTable(
             name = "film_language",
@@ -52,9 +56,14 @@ public class Film {
     )
     private Set<Language> translatedLanguages = new HashSet<>();
 
-    @OneToOne
-    @JoinColumn(name = "language_id")
-    private Language originalLanguageId;
+    @ManyToMany
+    @JoinTable(
+            name = "film_category",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> filmCategories = new HashSet<>();
+
     private Integer rentalDuration;
     private Double rentalRate;
     private Integer length;

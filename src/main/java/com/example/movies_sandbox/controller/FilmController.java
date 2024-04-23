@@ -19,4 +19,9 @@ public class FilmController {
     public List<Film> findAll() {
         return filmRepository.findFirst10();
     }
+
+    @GetMapping("/first")
+    public Film findFirst() {
+        return filmRepository.findFirst();
+    }
 }
