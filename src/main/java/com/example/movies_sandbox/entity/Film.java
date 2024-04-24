@@ -2,6 +2,7 @@ package com.example.movies_sandbox.entity;
 
 import com.example.movies_sandbox.entity.enums.Rating;
 import com.example.movies_sandbox.utils.RatingConverter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,15 +12,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.sql.Timestamp;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,14 +31,14 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(of = {"title", "description"})
+@ToString(exclude = "countries")
 @Entity
-@ToString
-@Table(name = "film")
 public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String title;
     private String description;
@@ -68,10 +68,19 @@ public class Film {
     private Double rentalRate;
     private Integer length;
     private Double replacementCost;
-    private Timestamp lastUpdate;
 
     @Convert(converter = RatingConverter.class)
     private Rating ageRating;
+
+    @Schema(hidden = true)
+    @ManyToMany
+    @JoinTable(
+            name = "film_country",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "country_id")
+    )
+    @Builder.Default
+    private Set<Country> countries = new HashSet<>();
 
     @ManyToMany
     @JoinTable(

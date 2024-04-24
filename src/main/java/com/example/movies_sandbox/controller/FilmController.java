@@ -21,7 +21,7 @@ public class FilmController {
     }
 
     @GetMapping("/first")
-    public Film findFirst() {
-        return filmRepository.findFirst();
+    public void findFirst() {
+        System.out.println( filmRepository.findFirst());
     }
 }
