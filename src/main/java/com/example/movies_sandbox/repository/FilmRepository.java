@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FilmRepository extends JpaRepository<Film, Integer> {
+public interface FilmRepository extends JpaRepository<Film, Long> {
 
     @Query("SELECT f from Film f order by f.id ASC LIMIT 10")
     List<Film> findFirst10();
