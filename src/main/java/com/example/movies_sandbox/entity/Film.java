@@ -11,19 +11,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.Year;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -31,8 +27,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@EqualsAndHashCode(of = {"title", "description"})
-@ToString(exclude = "countries")
 @Entity
 public class Film {
 
@@ -42,9 +36,10 @@ public class Film {
 
     private String title;
     private String description;
+    private Integer length;
     private Year releaseYear;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "original_language_id")
     private Language originalMovieLanguage;
 
@@ -54,7 +49,7 @@ public class Film {
             joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "language_id")
     )
-    private Set<Language> translatedLanguages = new HashSet<>();
+    private Set<Language> languages = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -62,12 +57,7 @@ public class Film {
             joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private Set<Category> filmCategories = new HashSet<>();
-
-    private Integer rentalDuration;
-    private Double rentalRate;
-    private Integer length;
-    private Double replacementCost;
+    private Set<Category> categories = new HashSet<>();
 
     @Convert(converter = RatingConverter.class)
     private Rating ageRating;
@@ -96,6 +86,6 @@ public class Film {
             joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
-    private List<Actor> actors = new ArrayList<>();
+    private Set<Actor> actors = new HashSet<>();
 
 }

@@ -2,6 +2,8 @@ package com.example.movies_sandbox.controller;
 
 
 import com.example.movies_sandbox.entity.Film;
+import com.example.movies_sandbox.entity.dto.FilmDto;
+import com.example.movies_sandbox.entity.mappers.FilmMapper;
 import com.example.movies_sandbox.repository.FilmRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import java.util.List;
 public class FilmController {
 
     private final FilmRepository filmRepository;
+    private final FilmMapper mapper;
 
     @GetMapping
     public List<Film> findAll() {
@@ -21,7 +24,7 @@ public class FilmController {
     }
 
     @GetMapping("/first")
-    public void findFirst() {
-        System.out.println( filmRepository.findFirst());
+    public FilmDto findFirst() {
+        return FilmMapper.INSTANCE.toDto(filmRepository.findFirst());
     }
 }
