@@ -22,26 +22,5 @@ public class FilmDto {
     private Rating ageRating;
     private Set<String> countries;
     private Set<String> specialFeatures;
-
-    public Set<String> getLanguages() {
-        return languages;
-    }
-
-    public Set<String> getCategories() {
-        return categories;
-    }
-
-    public Set<String> getCountries() {
-        return countries;
-    }
-
-    public Set<String> getSpecialFeatures() {
-        return specialFeatures;
-    }
-
-    public Set<String> getActors() {
-        return actors;
-    }
-
     private Set<String> actors;
 }
