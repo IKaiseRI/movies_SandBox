@@ -13,6 +13,7 @@ import java.util.Set;
 @Builder
 public class FilmDto {
 
+    private Long id;
     private String title;
     private String description;
     private Year releaseYear;

@@ -12,6 +12,7 @@ import java.util.Set;
 @Builder
 public class SpecialFeatureDto {
 
+    private Long id;
     private String name;
     private Set<String> films;
 }

@@ -10,6 +10,8 @@ import java.util.Set;
 @Setter
 @Builder
 public class CountryDto {
+
+    private Long id;
     private String name;
     private Set<String> films;
 }

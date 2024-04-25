@@ -12,6 +12,7 @@ import java.util.Set;
 @Builder
 public class ActorDto {
 
+    private Long id;
     private String firstName;
     private String lastName;
     private Set<String> films;

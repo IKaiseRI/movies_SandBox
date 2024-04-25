@@ -11,6 +11,7 @@ import java.util.Set;
 @Builder
 public class CategoryDto {
 
+    private Long id;
     private String name;
     private Set<String> films;
 }
