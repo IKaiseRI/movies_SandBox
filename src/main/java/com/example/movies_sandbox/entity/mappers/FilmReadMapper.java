@@ -16,9 +16,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Mapper
-public interface FilmMapper {
+public interface FilmReadMapper {
 
-    FilmMapper INSTANCE = Mappers.getMapper(FilmMapper.class);
+    FilmReadMapper INSTANCE = Mappers.getMapper(FilmReadMapper.class);
 
     @Mapping(target = "originalMovieLanguage", source = "originalMovieLanguage.name")
     @Mapping(target = "languages", source = "languages", qualifiedByName = "dtoMapTranslatedLanguages")
@@ -62,4 +62,6 @@ public interface FilmMapper {
                 .map(actor -> actor.getFirstName() + " " + actor.getLastName())
                 .collect(Collectors.toSet());
     }
+
+
 }
