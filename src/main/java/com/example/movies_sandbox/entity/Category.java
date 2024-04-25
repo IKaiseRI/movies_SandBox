@@ -27,4 +27,9 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private Set<Film> films = new HashSet<>();
+
+    public void addFilm(Film film) {
+        films.add(film);
+        film.getCategories().add(this);
+    }
 }

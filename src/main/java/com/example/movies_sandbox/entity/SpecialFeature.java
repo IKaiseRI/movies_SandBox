@@ -30,4 +30,9 @@ public class SpecialFeature {
 
     @ManyToMany(mappedBy = "specialFeatures")
     private Set<Film> films = new HashSet<>();
+
+    public void addFilm(Film film) {
+        films.add(film);
+        film.getSpecialFeatures().add(this);
+    }
 }

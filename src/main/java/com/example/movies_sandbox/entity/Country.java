@@ -30,4 +30,9 @@ public class Country {
     @Builder.Default
     @ManyToMany(mappedBy = "countries")
     private Set<Film> films = new HashSet<>();
+
+    public void addFilm(Film film) {
+        films.add(film);
+        film.getCountries().add(this);
+    }
 }

@@ -29,4 +29,9 @@ public class Language {
     @OneToMany
     @JoinColumn(name = "original_language_id")
     private Set<Film> films = new HashSet<>();
+
+    public void addFilm(Film film) {
+        films.add(film);
+        film.getLanguages().add(this);
+    }
 }

@@ -10,9 +10,8 @@ import com.example.movies_sandbox.repository.SpecialFeatureRepository;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 @RequiredArgsConstructor
 public abstract class FilmCreateEditMapper {
 
@@ -21,8 +20,6 @@ public abstract class FilmCreateEditMapper {
     protected CategoryRepository categoryRepository;
     protected CountryRepository countryRepository;
     protected SpecialFeatureRepository specialFeatureRepository;
-
-    FilmCreateEditMapper INSTANCE = Mappers.getMapper(FilmCreateEditMapper.class);
 
     @Mapping(target = "originalMovieLanguage.name", source = "originalMovieLanguage")
     @Mapping(target = "languages", expression = "java(languageRepository.findAllByName(filmDto.getLanguages()))")
